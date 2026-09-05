@@ -1,1 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Qaza Namaz Tracker</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =========================
+       WELCOME
+  ========================== -->
+
+  <section id="welcomeScreen" class="screen welcome-screen">
+
+    <div class="welcome-card">
+
+      <div class="mosque-icon">🕌</div>
+
+      <h1>Qaza Namaz Tracker</h1>
+
+      <p>
+        Manage your Qaza prayers easily and consistently.
+      </p>
+
+      <button class="main-button" onclick="showLanguage()">
+        Start
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       LANGUAGE
+  ========================== -->
+
+  <section id="languageScreen" class="screen hidden">
+
+    <div class="setup-card">
+
+      <h2>Select Language</h2>
+
+      <p>Choose your preferred language</p>
+
+      <button class="language-button"
+              onclick="selectLanguage('en')">
+        🇬🇧 English
+      </button>
+
+      <button class="language-button"
+              onclick="selectLanguage('gu')">
+        🇮🇳 ગુજરાતી
+      </button>
+
+      <button class="language-button"
+              onclick="selectLanguage('ur')">
+        اردو
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SETUP
+  ========================== -->
+
+  <section id="setupScreen" class="screen hidden">
+
+    <div class="setup-card">
+
+      <h2>Set Your Qaza Plan</h2>
+
+      <label>
+        How many years of Qaza?
+      </label>
+
+      <input
+        id="yearsInput"
+        type="number"
+        min="1"
+        value="2"
+      >
+
+      <label>
+        How many days to complete?
+      </label>
+
+      <input
+        id="planDaysInput"
+        type="number"
+        min="1"
+        value="365"
+      >
+
+      <div class="calculation-box">
+
+        <p>
+          Total Qaza:
+          <strong id="previewTotal">3650</strong>
+        </p>
+
+        <p>
+          Daily target:
+          <strong id="previewDaily">10</strong>
+        </p>
+
+      </div>
+
+      <button
+        class="main-button"
+        onclick="createPlan()"
+      >
+        Create My Plan
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       MAIN APP
+  ========================== -->
+
+  <main id="app" class="hidden">
+
+    <header class="top-header">
+
+      <div>
+
+        <h1>🕌 Qaza Namaz Tracker</h1>
+
+        <p id="currentDate"></p>
+
+      </div>
+
+      <button
+        class="reset-button"
+        onclick="resetTracker()"
+      >
+        Reset
+      </button>
+
+    </header>
+
+
+    <!-- =========================
+         SUMMARY
+    ========================== -->
+
+    <section class="summary-grid">
+
+      <div class="summary-card">
+        <span>Total Qaza</span>
+        <strong id="totalQaza">0</strong>
+      </div>
+
+      <div class="summary-card">
+        <span>Completed</span>
+        <strong id="completedQaza">0</strong>
+      </div>
+
+      <div class="summary-card">
+        <span>Remaining</span>
+        <strong id="remainingQaza">0</strong>
+      </div>
+
+      <div class="summary-card">
+        <span>Today's Target</span>
+        <strong id="todayTarget">0</strong>
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROGRESS
+    ========================== -->
+
+    <section class="card">
+
+      <h2>Overall Progress</h2>
+
+      <div class="progress-container">
+
+        <div id="progressBar"></div>
+
+      </div>
+
+      <div
+        id="progressPercentage"
+        class="percentage"
+      >
+        0%
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         TODAY
+    ========================== -->
+
+    <section class="card">
+
+      <div class="section-heading">
+
+        <div>
+
+          <h2>Today's Qaza</h2>
+
+          <p id="selectedDateText"></p>
+
+        </div>
+
+        <div class="day-badge">
+          Day <span id="selectedDayNumber">1</span>
+        </div>
+
+      </div>
+
+
+      <div class="daily-progress">
+
+        <span id="dailyProgressTex
